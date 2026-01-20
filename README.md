@@ -1,3 +1,5 @@
+![Build](https://github.com/snehanathani/llm-gateway/actions/workflows/ci.yml/badge.svg)
+
 # LLM Gateway Skeleton
 
 ## Overview
@@ -52,7 +54,7 @@ Configuration can be provided through:
 # example request
 curl -X POST http://localhost:8080/generate \
      -H "Content-Type: text/plain" \
-     -d "Explain LLM gateways"
+     -d "Hello world"
 
 # folder structure
 
