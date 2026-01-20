@@ -26,14 +26,39 @@ LLM implementation to be switched at runtime via configuration.
 # Select provider: local | openai
 llm.provider=local
 
-To use OpenAI:
-export OPENAI_API_KEY=your_key
+# Default mode (no key required)
+llm.provider=local
 
-Run Locally
+# To enable OpenAI
+export OPENAI_API_KEY=your_key
+llm.provider=openai
+
+
+# Run Locally
 ./mvnw spring-boot:run
 
-example request
+
+## Provider switching
+
+Set the property `llm.provider` to either:
+
+- `local` — uses the stub implementation (free)
+- `openai` — calls OpenAI via Spring AI
+
+Configuration can be provided through:
+- `application.properties`
+- Environment variables
+
+# example request
 curl -X POST http://localhost:8080/generate \
      -H "Content-Type: text/plain" \
      -d "Explain LLM gateways"
 
+# folder structure
+
+src/main/java
+├─ controller/GenerateController.java
+├─ service/LlmService.java
+├─ service/LocalStubLlmService.java
+├─ service/OpenAiLlmService.java
+├─ config/LlmServiceConfig.java
